@@ -1,10 +1,10 @@
 POST http://localhost:8080/events
 content-type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEsImVtYWlsIjoidXJtaXRwYXRlbDAxQGdtYWlsLmNvbSIsImV4cCI6MTc4Nzc1NzYwMH0.xkSCiHJRMMP9yQ1ZwjVZihY4UnhyWajsGVZes84WsLg
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjEsImVtYWlsIjoidXJtaXRwYXRlbDAxQGdtYWlsLmNvbSIsImV4cCI6MTc4Nzc2MzQ3M30.xtUZtthJT0uGU98EIFaXbW6l12vLSc645DZPx7NLeUw
 
 {
-    "name" : "Test Event 08",
-    "description" : "A Test Event description 08",
-    "location" : "A Test location 08",
+    "name" : "Test Event 03",
+    "description" : "A Test Event description 03",
+    "location" : "A Test location 03",
     "datetime" : "2026-08-01T15:00:00.000Z"
 }
