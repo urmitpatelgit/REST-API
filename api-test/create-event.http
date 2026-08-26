@@ -3,8 +3,8 @@ content-type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOjIsImVtYWlsIjoidXJtaXRwYXRlbDAyQGdtYWlsLmNvbSIsImV4cCI6MTc4NzcyMDY2MX0.OqFuymAZN4QB1cbD17yZ26FgVsCFtr335E5aWEBIaTo
 
 {
-    "name" : "Test Event 04",
-    "description" : "A Test Event description 05",
-    "location" : "A Test location 05",
+    "name" : "Test Event 08",
+    "description" : "A Test Event description 08",
+    "location" : "A Test location 08",
     "datetime" : "2026-08-01T15:00:00.000Z"
 }
