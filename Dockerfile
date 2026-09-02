@@ -1,33 +1,30 @@
 # --- Stage 1: Build the binary ---
-FROM golang:1.26-alpine AS builder
+FROM golang:1.26-bookworm AS builder
 
-# Set the working directory inside the container
+# Install build essentials required for SQLite3 (CGO)
+RUN apt-get update && apt-get install -y --no-install-recommends gcc g++ libc6-dev && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
-# Copy dependency manifests first for efficient caching
 COPY go.mod go.sum ./
-
-# Download dependencies
 RUN go mod download
 
-# Copy the rest of the application source code
 COPY . .
 
-# Build a statically linked binary for Linux
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+# Enable CGO for SQLite3 compilation
+RUN CGO_ENABLED=1 GOOS=linux go build -o main .
 
 # --- Stage 2: Final minimal production image ---
-FROM alpine:latest  
+# Using the matching Debian base to guarantee C library/CGO compatibility
+FROM debian:bookworm-slim
 
-RUN apk --no-cache add ca-certificates
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/
 
-# Copy the pre-built binary from the builder stage
+# Copy the built binary from stage 1
 COPY --from=builder /app/main .
 
-# Expose the port your Gin API listens on (usually 8080)
 EXPOSE 8080
 
-# Run the binary
 CMD ["./main"]
