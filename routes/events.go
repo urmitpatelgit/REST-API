@@ -25,7 +25,7 @@ func getEvent(context *gin.Context) {
 
 	event, err := models.GetEventByID(eventId)
 	if err != nil {
-		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not get event."})
+		context.JSON(http.StatusInternalServerError, gin.H{"message": "Could not get event!!!"})
 		return
 	}
 	context.JSON(http.StatusOK, event)
